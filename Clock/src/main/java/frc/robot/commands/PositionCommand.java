@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 
 //should set the position to a specific spot
-//can be any arbitrary value or to a position value of 0.5
+//can be any arbitrary value
 //should use methods from the subsystem
 public class PositionCommand extends Command {
 
