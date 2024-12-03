@@ -21,8 +21,9 @@ public class ClockSubsystem extends SubsystemBase {
   ///////////Methods
 
   //SetPosition
-  //The method for setting position is:
-  //        motor.setControl(new VoltageOut(yourPositionInRotations))
+  public void setPosition(double position){
+    //motor.setControl(new VoltageOut(position))
+  }
 
   //GetPosition
 
