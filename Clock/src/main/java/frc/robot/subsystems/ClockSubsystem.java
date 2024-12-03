@@ -12,7 +12,7 @@ import frc.robot.Constants;
 
 public class ClockSubsystem extends SubsystemBase {
   
-  //Needs TalonFX motor
+  //Needs a TalonFX motor
 
   public ClockSubsystem() {
     //initialize necessary fields
