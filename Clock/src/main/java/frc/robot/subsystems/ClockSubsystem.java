@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 
 
+import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -22,14 +23,24 @@ public class ClockSubsystem extends SubsystemBase {
 
   ///////////Methods
 
-  //SetPosition
-  //The method for setting position is:
-  //        motor.setControl(new VoltageOut(yourPositionInRotations))
+  public void SetPosition(double position){
+    motor.setControl(new VoltageOut(position));
+  }
 
   //GetPosition
+  public double GetPosition(){
+    return motor.getPosition().getValue();
+  }
 
+  public void SetSpeed(double speed){
+    motor.set(speed);
+  }
   //SetSpeed
 
+
+  public double getSpeed(){
+    return motor.get();
+  }
   //GetSpeed
 
 

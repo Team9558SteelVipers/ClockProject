@@ -5,16 +5,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.ClockSubsystem;
 
 
 //should set the position to a specific spot
 //can be any arbitrary value
 //should use methods from the subsystem
-public class PositionCommand extends Command {
+public class SpeedCommand extends Command {
 
-  //Needs the subsystem
+  ClockSubsystem clock;
+  CommandXboxController controller= new CommandXboxController(0);
   
-  public PositionCommand() {
+  public SpeedCommand(ClockSubsystem clock) {
+    this.clock = clock;
+    addRequirements(clock);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -26,7 +31,15 @@ public class PositionCommand extends Command {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    double speed;
+    if (Math.abs(controller.getLeftX()) > 0.05){
+      speed = controller.getLeftX();
+    } else {
+      speed = 0;
+    }
+    clock.SetPosition(speed);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

@@ -6,6 +6,8 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.SpeedCommand;
+import frc.robot.subsystems.ClockSubsystem;
 
 
 
@@ -16,7 +18,8 @@ public class RobotContainer {
 
   //Initialize Subsystem
 
-  //m_clockSubsystem
+  ClockSubsystem clock = new ClockSubsystem();
+  SpeedCommand speedCommand = new SpeedCommand(clock);
 
   //Initialize both commands
 
@@ -31,7 +34,7 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-
+    clock.setDefaultCommand(speedCommand);
   }
 
   public Command getAutonomousCommand() {

@@ -63,9 +63,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    
-    //schedule the command here
-    //m_robotContainer.m_positionCommand
 
   }
 
