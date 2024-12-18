@@ -17,7 +17,7 @@ public class ClockSubsystem extends SubsystemBase {
   public ClockSubsystem() {} 
 
   public void setSpeed(double speed){
-    clockMotor.set(speed);
+    clockMotor.set(-speed);
   }
   
   public double getSpeed(){
