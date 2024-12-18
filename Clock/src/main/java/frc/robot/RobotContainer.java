@@ -6,6 +6,9 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.PositionCommand;
 import frc.robot.commands.SpeedCommand;
 import frc.robot.subsystems.ClockSubsystem;
 
@@ -20,6 +23,8 @@ public class RobotContainer {
 
   ClockSubsystem clock = new ClockSubsystem();
   SpeedCommand speedCommand = new SpeedCommand(clock);
+  PositionCommand positionCommand = new PositionCommand(clock, 0);
+  CommandXboxController controller = new CommandXboxController(0);
 
   //Initialize both commands
 
@@ -34,7 +39,15 @@ public class RobotContainer {
 
 
   private void configureBindings() {
-    clock.setDefaultCommand(speedCommand);
+
+    controller.a().onTrue(new InstantCommand(() -> {
+      positionCommand.addTime(0.08);
+    }));
+    controller.b().onTrue(new InstantCommand(() -> {
+      positionCommand.setTime(0);
+    }));
+
+    clock.setDefaultCommand(positionCommand);
   }
 
   public Command getAutonomousCommand() {
