@@ -5,23 +5,25 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ClockSubsystem;
 
+public class SpeedCommand extends Command {
 
-//should set the position to a specific spot
-//can be any arbitrary value
-//should use methods from the subsystem
-public class PositionCommand extends Command {
+  ClockSubsystem clock;
+  double m_speed;
 
-  //Needs the subsystem
-  
-  public PositionCommand() {
+  /** Creates a new SpeedCommand. */
+  public SpeedCommand(ClockSubsystem sub, double speed) {
+    clock=sub;
+    m_speed = speed;
+    addRequirements(sub);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    clock.setSpeed(m_speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -30,7 +32,9 @@ public class PositionCommand extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    clock.setSpeed(0.0);  
+  }
 
   // Returns true when the command should end.
   @Override

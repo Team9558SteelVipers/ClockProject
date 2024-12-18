@@ -13,7 +13,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  ///////////Clock Constants
+  public static int kMotorPort = 6;
 
-  static final int clockMotorPort = 0;
+  public static int kControllerPort = 0;
 }

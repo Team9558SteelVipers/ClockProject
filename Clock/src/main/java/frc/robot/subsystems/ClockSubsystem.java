@@ -4,37 +4,34 @@
 
 package frc.robot.subsystems;
 
-
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ClockSubsystem extends SubsystemBase {
+
+  public TalonFX clockMotor = new TalonFX(Constants.kMotorPort);
+
+  /** Creates a new ExampleSubsystem. */
+  public ClockSubsystem() {} 
+
+  public void setSpeed(double speed){
+    clockMotor.set(speed);
+  }
   
-  //Needs a TalonFX motor
-
-  public ClockSubsystem() {
-    //initialize necessary fields
+  public double getSpeed(){
+    return clockMotor.get();
   }
 
-  ///////////Methods
-
-  //SetPosition
-  public void setPosition(double position){
-    //motor.setControl(new VoltageOut(position))
-  }
-
-  //GetPosition
-
-  //SetSpeed
-
-  //GetSpeed
-
-
-
+  
   @Override
   public void periodic() {
-    // No code needed here
+    // This method will be called once per scheduler run
+  }
+
+  @Override
+  public void simulationPeriodic() {
+    // This method will be called once per scheduler run during simulation
   }
 }
