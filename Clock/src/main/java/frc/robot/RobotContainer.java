@@ -41,7 +41,7 @@ public class RobotContainer {
   private void configureBindings() {
 
     controller.a().onTrue(new InstantCommand(() -> {
-      positionCommand.addTime(0.08);
+      positionCommand.addTime(0.5);
     }));
     controller.b().onTrue(new InstantCommand(() -> {
       positionCommand.setTime(0);

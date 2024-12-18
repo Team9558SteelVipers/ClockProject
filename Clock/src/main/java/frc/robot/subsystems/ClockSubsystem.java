@@ -10,6 +10,7 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.GravityTypeValue;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -19,7 +20,12 @@ public class ClockSubsystem extends SubsystemBase {
   //Needs TalonFX motor
   TalonFX motor;
 
-  TalonFXConfiguration config = new TalonFXConfiguration().withSlot0(new Slot0Configs().withKP(1.5).withKI(0.15).withKD(0.1).withKG(0.2));
+  TalonFXConfiguration config = new TalonFXConfiguration().withSlot0(
+                                                    new Slot0Configs().withKP(1.5)
+                                                                      .withKI(0.2)
+                                                                      .withKD(0.1)
+                                                                      .withKG(0.2)
+                                                                      .withGravityType(GravityTypeValue.Arm_Cosine));
   public ClockSubsystem() {
     //initialize necessary fields
     motor = new TalonFX(6);
