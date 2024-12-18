@@ -4,7 +4,8 @@
 
 package frc.robot;
 
-import frc.robot.commands.clockCommand;
+import frc.robot.commands.clockCommandDyn;
+import frc.robot.commands.clockCommandStatic;
 import frc.robot.commands.clockPosition;
 import frc.robot.subsystems.ClockSubsystem;
 
@@ -23,8 +24,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ClockSubsystem m_ClockSubsystem = new ClockSubsystem();
-
-  private clockCommand m_ClockCommand = new clockCommand(m_ClockSubsystem);
+  CommandXboxController xcontroller = new CommandXboxController(0);
+  private clockCommandDyn m_dynCommand = new clockCommandDyn(m_ClockSubsystem, xcontroller :: getRightX);
+  private clockCommandStatic m_ClockCommandSp25 = new clockCommandStatic(m_ClockSubsystem,0.25);
+  private clockCommandStatic m_ClockCommandSp50 = new clockCommandStatic(m_ClockSubsystem,0.5);
+  private clockCommandStatic m_ClockCommandSp75 = new clockCommandStatic(m_ClockSubsystem,0.75);
+  private clockCommandStatic m_ClockCommandSp100 = new clockCommandStatic(m_ClockSubsystem,1.0);
   private clockPosition m_ClockPosition = new clockPosition(m_ClockSubsystem);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -33,7 +38,9 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
+    xcontroller.a().whileTrue(m_ClockCommandSp25);
+    xcontroller.rightTrigger().whileTrue(m_ClockCommandSp100);
+    // Clock.setDefaultCommand(m_dynCommand);
   }
 
   /**
@@ -43,6 +50,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return m_ClockPosition;
+    return null;
   }
 }
