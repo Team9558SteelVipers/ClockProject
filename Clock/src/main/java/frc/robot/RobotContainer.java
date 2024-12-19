@@ -40,6 +40,7 @@ public class RobotContainer {
   private void configureBindings() {
     xcontroller.a().whileTrue(m_ClockCommandSp25);
     xcontroller.rightTrigger().whileTrue(m_ClockCommandSp100);
+    xcontroller.leftTrigger().whileTrue(m_ClockPosition);
     m_ClockSubsystem.setDefaultCommand(m_dynCommand);
   }
 

@@ -19,7 +19,7 @@ public class clockPosition extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_ClockSubsystem.setPosition(-3.5);
+    m_ClockSubsystem.setPosition(-.5);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
