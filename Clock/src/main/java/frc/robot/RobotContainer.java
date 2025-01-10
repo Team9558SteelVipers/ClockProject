@@ -5,10 +5,10 @@
 package frc.robot;
 
 import frc.robot.commands.CoralOuttake;
-import frc.robot.commands.clockCommandDyn;
-import frc.robot.commands.clockCommandDynOpp;
-import frc.robot.commands.clockCommandStatic;
-import frc.robot.subsystems.ClockSubsystem;
+import frc.robot.commands.motorCommandDyn;
+import frc.robot.commands.motorCommandDynOpp;
+import frc.robot.commands.motorCommandStatic;
+import frc.robot.subsystems.Subsystem;
 
 import java.time.Clock;
 
@@ -24,15 +24,15 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ClockSubsystem m_ClockSubsystem = new ClockSubsystem();
+  private final Subsystem m_Subsystem = new Subsystem();
   CommandXboxController xcontroller = new CommandXboxController(0);
-  private clockCommandDyn m_dynCommand = new clockCommandDyn(m_ClockSubsystem, xcontroller :: getRightY);
-  private clockCommandDynOpp m_dynCommandOpp = new clockCommandDynOpp(m_ClockSubsystem, xcontroller :: getLeftY);
-  private clockCommandStatic m_ClockCommandSp25 = new clockCommandStatic(m_ClockSubsystem,0.25);
-  private clockCommandStatic m_ClockCommandSp50 = new clockCommandStatic(m_ClockSubsystem,0.5);
-  private clockCommandStatic m_ClockCommandSp75 = new clockCommandStatic(m_ClockSubsystem,0.75);
-  private clockCommandStatic m_ClockCommandSp100 = new clockCommandStatic(m_ClockSubsystem,1.0);
-  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_ClockSubsystem);
+  private motorCommandDyn m_dynCommand = new motorCommandDyn(m_Subsystem, xcontroller :: getRightY);
+  private motorCommandDynOpp m_dynCommandOpp = new motorCommandDynOpp(m_Subsystem, xcontroller :: getLeftY);
+  private motorCommandStatic m_ClockCommandSp25 = new motorCommandStatic(m_Subsystem,0.25);
+  private motorCommandStatic m_ClockCommandSp50 = new motorCommandStatic(m_Subsystem,0.5);
+  private motorCommandStatic m_ClockCommandSp75 = new motorCommandStatic(m_Subsystem,0.75);
+  private motorCommandStatic m_ClockCommandSp100 = new motorCommandStatic(m_Subsystem,1.0);
+  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_Subsystem);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -43,7 +43,7 @@ public class RobotContainer {
     xcontroller.a().whileTrue(m_ClockCommandSp25);
     xcontroller.x().whileTrue(m_CoralOuttake);
     xcontroller.rightTrigger().whileTrue(m_ClockCommandSp50);
-    m_ClockSubsystem.setDefaultCommand(m_dynCommand);
+    m_Subsystem.setDefaultCommand(m_dynCommand);
   }
 
   /**
