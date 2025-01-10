@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Subsystem m_Subsystem = new Subsystem();
-  CommandXboxController xcontroller = new CommandXboxController(0);
+  CommandXboxController xcontroller = new CommandXboxController(0); 
   private motorCommandDyn m_dynCommand = new motorCommandDyn(m_Subsystem, xcontroller :: getRightY);
   private motorCommandDynOpp m_dynCommandOpp = new motorCommandDynOpp(m_Subsystem, xcontroller :: getLeftY);
   private motorCommandStatic m_ClockCommandSp25 = new motorCommandStatic(m_Subsystem,0.25);
