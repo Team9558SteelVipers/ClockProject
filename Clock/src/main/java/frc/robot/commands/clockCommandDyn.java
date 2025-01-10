@@ -27,7 +27,11 @@ public class clockCommandDyn extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+  if (Math.abs(speed.get())>0.05){
     m_ClockSubsystem.setClockSpeedDyn(speed.get());
+  } else {
+    
+  }
 }
 
   // Called once the command ends or is interrupted.

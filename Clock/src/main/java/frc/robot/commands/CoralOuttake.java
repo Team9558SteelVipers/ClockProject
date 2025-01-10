@@ -7,14 +7,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.ClockSubsystem;
-public class clockCommandStatic extends Command {
+public class CoralOuttake extends Command {
 
   ClockSubsystem m_ClockSubsystem;
-  double speed;
   
-  public clockCommandStatic(ClockSubsystem clockSubsystem, Double newSpeed) {
+  public CoralOuttake(ClockSubsystem clockSubsystem) {
     m_ClockSubsystem = clockSubsystem;
-    speed = newSpeed;
     addRequirements(clockSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -22,7 +20,7 @@ public class clockCommandStatic extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_ClockSubsystem.setMotorSpeed(speed);
+    m_ClockSubsystem.outtakeCoral();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

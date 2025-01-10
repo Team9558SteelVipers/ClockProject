@@ -4,9 +4,10 @@
 
 package frc.robot;
 
+import frc.robot.commands.CoralOuttake;
 import frc.robot.commands.clockCommandDyn;
+import frc.robot.commands.clockCommandDynOpp;
 import frc.robot.commands.clockCommandStatic;
-import frc.robot.commands.clockPosition;
 import frc.robot.subsystems.ClockSubsystem;
 
 import java.time.Clock;
@@ -25,12 +26,13 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ClockSubsystem m_ClockSubsystem = new ClockSubsystem();
   CommandXboxController xcontroller = new CommandXboxController(0);
-  private clockCommandDyn m_dynCommand = new clockCommandDyn(m_ClockSubsystem, xcontroller :: getRightX);
+  private clockCommandDyn m_dynCommand = new clockCommandDyn(m_ClockSubsystem, xcontroller :: getRightY);
+  private clockCommandDynOpp m_dynCommandOpp = new clockCommandDynOpp(m_ClockSubsystem, xcontroller :: getLeftY);
   private clockCommandStatic m_ClockCommandSp25 = new clockCommandStatic(m_ClockSubsystem,0.25);
   private clockCommandStatic m_ClockCommandSp50 = new clockCommandStatic(m_ClockSubsystem,0.5);
   private clockCommandStatic m_ClockCommandSp75 = new clockCommandStatic(m_ClockSubsystem,0.75);
   private clockCommandStatic m_ClockCommandSp100 = new clockCommandStatic(m_ClockSubsystem,1.0);
-  private clockPosition m_ClockPosition = new clockPosition(m_ClockSubsystem);
+  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_ClockSubsystem);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -39,8 +41,8 @@ public class RobotContainer {
 
   private void configureBindings() {
     xcontroller.a().whileTrue(m_ClockCommandSp25);
+    xcontroller.x().whileTrue(m_CoralOuttake);
     xcontroller.rightTrigger().whileTrue(m_ClockCommandSp50);
-    xcontroller.leftTrigger().whileTrue(m_ClockPosition);
     m_ClockSubsystem.setDefaultCommand(m_dynCommand);
   }
 
