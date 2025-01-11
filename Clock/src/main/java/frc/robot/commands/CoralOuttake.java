@@ -6,22 +6,21 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.Subsystem;
+import frc.robot.subsystems.ClockSubsystem;
 public class CoralOuttake extends Command {
 
-  Subsystem m_Subsystem;
+  ClockSubsystem m_ClockSubsystem;
   
-  public CoralOuttake(Subsystem Subsystem) {
-    m_Subsystem = Subsystem;
-    addRequirements(Subsystem);
+  public CoralOuttake(ClockSubsystem clockSubsystem) {
+    m_ClockSubsystem = clockSubsystem;
+    addRequirements(clockSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // run outtake Coral command(defined in subsystem)
-    m_Subsystem.outtakeCoral();
+    m_ClockSubsystem.outtakeCoral();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

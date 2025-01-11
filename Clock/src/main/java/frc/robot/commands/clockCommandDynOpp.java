@@ -5,24 +5,24 @@
 package frc.robot.commands;
 
 import java.util.function.Supplier;
-
+import frc.robot.subsystems.ClockSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Subsystem;
-public class motorCommandDynOpp extends Command {
 
-  Subsystem m_Subsystem;
+public class clockCommandDynOpp extends Command {
+
+  ClockSubsystem m_ClockSubsystem;
   Supplier <Double> speed;
-  public motorCommandDynOpp(Subsystem Subsystem, Supplier<Double> newSpeed) {
-    m_Subsystem = Subsystem;
+
+
+  public clockCommandDynOpp(ClockSubsystem clockSubsystem, Supplier<Double> newSpeed) {
+    m_ClockSubsystem = clockSubsystem;
     speed = newSpeed;
-    addRequirements(Subsystem);
+    addRequirements(clockSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
-
-  // Called when the command is initially scheduled.
+ 
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -30,11 +30,11 @@ public class motorCommandDynOpp extends Command {
     // Deadzone for joysticks
     if (Math.abs(speed.get())>0.05){
       // set motor speed of left side motors to joystick values
-      m_Subsystem.setMotorSpeedDynOpp(speed.get());
+      m_ClockSubsystem.setClockSpeedDynOpp(speed.get());
     } else{
       
     }
-}
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -42,7 +42,10 @@ public class motorCommandDynOpp extends Command {
 
   // Returns true when the command should end.
   @Override
+
   public boolean isFinished() {
     return false;
   }
 }
+
+

@@ -14,10 +14,6 @@ package frc.robot;
  */
 public final class Constants {
   ///////////Clock Constants
-  public static final double deadzone = 0.05;
-  public static final int motorPort1 = 0;
-  public static final int motorPort2 = 0;
-  public static final int motorPort3 = 0;
-  public static final int motorPort4 = 0;
-  public static final int motorPort5 = 0;
+
+  public static final int clockMotorPort = 0;
 }
