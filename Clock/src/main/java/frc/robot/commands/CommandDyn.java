@@ -1,37 +1,38 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-// let me save
+
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.ClockSubsystem;
-public class clockCommandStatic extends Command {
+import java.util.function.Supplier;
 
-  
-  double speed;
-  ClockSubsystem m_ClockSubsystem;
-  public clockCommandStatic(ClockSubsystem Subsystem, Double newSpeed){
-    
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.MotorSubsystem;
+public class CommandDyn extends Command {
+
+  MotorSubsystem m_MotorSubsystem;
+  Supplier <Double> speed;
+  public CommandDyn(MotorSubsystem MotorSubsystem, Supplier<Double> newSpeed) {
+    m_MotorSubsystem = MotorSubsystem;
     speed = newSpeed;
-    addRequirements(Subsystem);
+    addRequirements(MotorSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // Takes in speed and sets all
-    
-    m_ClockSubsystem.setMotorSpeed(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+  if (Math.abs(speed.get())>0.05){
+    m_MotorSubsystem.setMotorSpeedDyn(speed.get());
+  } else {
     
   }
+}
 
   // Called once the command ends or is interrupted.
   @Override

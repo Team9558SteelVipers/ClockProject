@@ -5,19 +5,21 @@
 package frc.robot.commands;
 
 import java.util.function.Supplier;
-import frc.robot.subsystems.ClockSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.MotorSubsystem;
 
-public class clockCommandDynOpp extends Command {
+public class CommandDynOpp extends Command {
 
-  ClockSubsystem m_ClockSubsystem;
+  MotorSubsystem m_MotorSubsystem;
+
   Supplier <Double> speed;
 
 
-  public clockCommandDynOpp(ClockSubsystem clockSubsystem, Supplier<Double> newSpeed) {
-    m_ClockSubsystem = clockSubsystem;
+  public CommandDynOpp(MotorSubsystem MotorSubsystem, Supplier<Double> newSpeed) {
+
+    m_MotorSubsystem = MotorSubsystem;
     speed = newSpeed;
-    addRequirements(clockSubsystem);
+    addRequirements(MotorSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
  
@@ -30,7 +32,7 @@ public class clockCommandDynOpp extends Command {
     // Deadzone for joysticks
     if (Math.abs(speed.get())>0.05){
       // set motor speed of left side motors to joystick values
-      m_ClockSubsystem.setClockSpeedDynOpp(speed.get());
+      m_MotorSubsystem.setMotorSpeedDynOpp(speed.get());
     } else{
       
     }

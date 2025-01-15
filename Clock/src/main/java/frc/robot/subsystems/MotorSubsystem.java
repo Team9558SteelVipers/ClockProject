@@ -15,14 +15,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 
-public class ClockSubsystem extends SubsystemBase{
+public class MotorSubsystem extends SubsystemBase{
     TalonFX Motor1;
     TalonFX Motor2;
     TalonFX Motor3;
     TalonFX Motor4;
     TalonFX CoralMotor;
     TalonFXConfiguration pidconfig = new TalonFXConfiguration().withSlot0(new Slot0Configs().withKP(1).withKI(0).withKD(0));
-    public ClockSubsystem() {
+    public MotorSubsystem() {
         Motor1 = new TalonFX(Constants.clockMotorPort);
         Motor2 = new TalonFX(Constants.clockMotorPort);
         Motor3 = new TalonFX(Constants.clockMotorPort);
@@ -45,13 +45,14 @@ public class ClockSubsystem extends SubsystemBase{
     }
 
 
-    public void setClockSpeedDyn(double speed) {
+    public void setMotorSpeedDyn(double speed) {
         Motor1.set(speed);
         Motor2.set(speed);
     }
-    public void setClockSpeedDynOpp(double speed) {
+    public void setMotorSpeedDynOpp(double speed) {
         Motor3.set(speed);
         Motor4.set(speed);
     }
+    
 
 }
