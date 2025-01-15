@@ -5,23 +5,28 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.ClockSubsystem;
 
 
 //should set the position to a specific spot
 //can be any arbitrary value
 //should use methods from the subsystem
 public class PositionCommand extends Command {
-
+ClockSubsystem subsystem;
+double speed;
   //Needs the subsystem
   
-  public PositionCommand() {
+  public PositionCommand(ClockSubsystem m_subsystem, double speedm) {
+    subsystem = m_subsystem;
+    speed = speedm;
+    addRequirements();
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    subsystem.setPosition(speed);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -12,16 +12,27 @@ import frc.robot.Constants;
 
 public class ClockSubsystem extends SubsystemBase {
   
-  //Needs a TalonFX motor
+  TalonFX motor1;
+  TalonFX motor2;
+  TalonFX motor3;
+  TalonFX motor4;
 
   public ClockSubsystem() {
     //initialize necessary fields
+    motor1 = new TalonFX(0);
+    motor2 = new TalonFX(0);
+    motor3 = new TalonFX(0);
+    motor4 = new TalonFX(0);
   }
 
   ///////////Methods
 
   //SetPosition
-  public void setPosition(double position){
+  public void setPosition(double speed){
+    motor1.set(speed);
+    motor2.set(-speed);
+    motor3.set(speed);
+    motor4.set(-speed);
     //motor.setControl(new VoltageOut(position))
   }
 
