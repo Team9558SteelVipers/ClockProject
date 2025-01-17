@@ -9,7 +9,7 @@ import frc.robot.commands.CoralOuttake;
 import frc.robot.commands.CommandDyn;
 import frc.robot.commands.CommandStatic;
 import frc.robot.subsystems.MotorSubsystem;
-
+import frc.robot.subsystems.CoralSubsystem;
 import java.time.Clock;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -25,13 +25,14 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final MotorSubsystem m_Subsystem = new MotorSubsystem();
+  private final CoralSubsystem m_CoralSubsystem = new CoralSubsystem();
   CommandXboxController xcontroller = new CommandXboxController(0); 
   private CommandDyn m_dynCommand = new CommandDyn(m_Subsystem, xcontroller :: getRightY, xcontroller :: getLeftY);
   private CommandStatic m_ClockCommandSp25 = new CommandStatic(m_Subsystem,0.25);
   private CommandStatic m_ClockCommandSp50 = new CommandStatic(m_Subsystem,0.5);
   private CommandStatic m_ClockCommandSp75 = new CommandStatic(m_Subsystem,0.75);
   private CommandStatic m_ClockCommandSp100 = new CommandStatic(m_Subsystem,1.0);
-  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_Subsystem);
+  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_CoralSubsystem);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings

@@ -20,14 +20,14 @@ public class MotorSubsystem extends SubsystemBase{
     TalonFX Motor2;
     TalonFX Motor3;
     TalonFX Motor4;
-    TalonFX CoralMotor;
+ 
     TalonFXConfiguration pidconfig = new TalonFXConfiguration().withSlot0(new Slot0Configs().withKP(1).withKI(0).withKD(0));
     public MotorSubsystem() {
         Motor1 = new TalonFX(Constants.MotorPort1);
         Motor2 = new TalonFX(Constants.MotorPort2);
         Motor3 = new TalonFX(Constants.MotorPort3);
         Motor4 = new TalonFX(Constants.MotorPort4);
-        CoralMotor = new TalonFX(Constants.coralMotorPort);
+
         Motor1.getConfigurator().apply(pidconfig);
         Motor2.getConfigurator().apply(pidconfig);
         Motor3.getConfigurator().apply(pidconfig);
@@ -39,9 +39,6 @@ public class MotorSubsystem extends SubsystemBase{
         Motor2.set(speed);
         Motor3.set(-speed);
         Motor4.set(-speed);
-    }
-    public void outtakeCoral(){
-      CoralMotor.set(0.3);
     }
 
 
