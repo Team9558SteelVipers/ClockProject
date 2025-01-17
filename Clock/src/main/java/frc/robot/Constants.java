@@ -15,5 +15,9 @@ package frc.robot;
 public final class Constants {
   ///////////Clock Constants
 
-  public static final int clockMotorPort = 0;
+  public static final int MotorPort1 = 0;
+  public static final int MotorPort2 = 0;
+  public static final int MotorPort3 = 0;
+  public static final int MotorPort4 = 0;
+  public static final int coralMotorPort = 0;
 }

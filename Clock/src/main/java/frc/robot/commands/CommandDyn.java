@@ -11,10 +11,12 @@ import frc.robot.subsystems.MotorSubsystem;
 public class CommandDyn extends Command {
 
   MotorSubsystem m_MotorSubsystem;
-  Supplier <Double> speed;
-  public CommandDyn(MotorSubsystem MotorSubsystem, Supplier<Double> newSpeed) {
+  Supplier <Double> rightSpeed;
+  Supplier <Double> leftSpeed;
+  public CommandDyn(MotorSubsystem MotorSubsystem, Supplier<Double> newRspeed, Supplier<Double> newLspeed) {
     m_MotorSubsystem = MotorSubsystem;
-    speed = newSpeed;
+    rightSpeed = newRspeed;
+    leftSpeed = newLspeed;
     addRequirements(MotorSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -27,8 +29,8 @@ public class CommandDyn extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  if (Math.abs(speed.get())>0.05){
-    m_MotorSubsystem.setMotorSpeedDyn(speed.get());
+  if ((Math.abs(rightSpeed.get())>0.05) & (Math.abs(rightSpeed.get())>0.05)){
+    m_MotorSubsystem.setMotorSpeedDyn(rightSpeed.get(), -(leftSpeed.get()));
   } else {
     
   }
