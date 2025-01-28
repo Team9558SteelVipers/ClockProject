@@ -8,7 +8,7 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
-//motors above have issue where they cannot be resolved to a type?
+
 
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -27,7 +27,7 @@ public class MotorSubsystem extends SubsystemBase{
         Motor2 = new TalonFX(Constants.MotorPort2);
         Motor3 = new TalonFX(Constants.MotorPort3);
         Motor4 = new TalonFX(Constants.MotorPort4);
-        //cannot instantiate TalonFX for MotorPort
+    
 
         Motor1.getConfigurator().apply(pidconfig);
         Motor2.getConfigurator().apply(pidconfig);

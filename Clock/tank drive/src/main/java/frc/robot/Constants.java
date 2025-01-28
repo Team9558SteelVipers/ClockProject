@@ -15,11 +15,10 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {}
     public static final int kDriverControllerPort = 0;
-    public static final int MotorPort1 = 0;
-    public static final int MotorPort2 = 0;
+    public static final int MotorPort1 = 15;
+    public static final int MotorPort2 = 14;
     public static final int MotorPort3 = 0;
-    public static final int MotorPort4 = 0;
+    public static final int MotorPort4 = 1;
     public static final int coralMotorPort = 0;
   
 }
-//above is what had to be input to fix an issue regarding the motors not being able to be resolvd
