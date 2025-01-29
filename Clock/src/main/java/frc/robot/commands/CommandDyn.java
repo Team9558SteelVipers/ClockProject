@@ -30,7 +30,7 @@ public class CommandDyn extends Command {
   @Override
   public void execute() {
   // if ((Math.abs(rightSpeed.get())>0.05) & (Math.abs(rightSpeed.get())>0.05)){
-    m_MotorSubsystem.setMotorSpeedDyn(rightSpeed.get(), -(leftSpeed.get()));
+    m_MotorSubsystem.setMotorSpeedDyn(rightSpeed.get(), (leftSpeed.get()));
   // } else {
     
   // }
