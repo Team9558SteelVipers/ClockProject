@@ -9,12 +9,13 @@ import frc.robot.commands.CommandDyn;
 import frc.robot.commands.CommandStatic;
 import frc.robot.subsystems.MotorSubsystem;
 import frc.robot.subsystems.CoralSubsystem;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
-import frc.robot.subsystems.TalonFX;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a

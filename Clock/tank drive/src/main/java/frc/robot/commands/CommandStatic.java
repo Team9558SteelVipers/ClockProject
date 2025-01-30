@@ -9,9 +9,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.MotorSubsystem;
 public class CommandStatic extends Command {
 
-  
+//private final MotorSubsystem m_Subsystem = new MotorSubsystem();
   double speed;
   MotorSubsystem m_MotorSubsystem;
+  private final MotorSubsystem m_Subsystem = m_MotorSubsystem;
   public CommandStatic(MotorSubsystem Subsystem, Double newSpeed){
     
     speed = newSpeed;
