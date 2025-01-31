@@ -13,7 +13,21 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  ///////////Clock Constants
+  public static int xboxControllerPort = 1;
 
-  static final int clockMotorPort = 0;
+  public static class tankDriveConstants {
+    public static final int leftMotorAPort = 6;
+    public static final int leftMotorBPort = 3;
+    public static final int rightMotorAPort = 1;
+    public static final int rightMotorBPort = 10;
+
+    public static double kTankP = 1;
+    public static double kTankI = 0;
+    public static double kTankD = 0;
+  }
+  public static class coralOutputConstants {
+    public static final int coralMotorPort = 2;
+    public static final double setShootingSpeed = -0.3;
+}
+
 }
