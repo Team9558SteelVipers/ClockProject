@@ -20,7 +20,7 @@ public class CoralSubsystem extends SubsystemBase{
     public CoralSubsystem() {
         CoralMotor = new TalonFX(Constants.coralMotorPort);
     }
-
+    //set motor speed
     public void outtakeCoral(){
       CoralMotor.set(0.3);
     }

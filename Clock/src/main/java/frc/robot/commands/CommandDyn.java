@@ -27,14 +27,15 @@ public class CommandDyn extends Command {
   }
 
   // Called every time the scheduler runs while the command is scheduled.
+ 
+  
   @Override
   public void execute() {
-  if ((Math.abs(rightSpeed.get())>0.05) & (Math.abs(rightSpeed.get())>0.05)){
-    m_MotorSubsystem.setMotorSpeedDyn(rightSpeed.get(), -(leftSpeed.get()));
-  } else {
-    
-  }
-}
+   // if ((Math.abs(rightSpeed.get()) > 0.05) & (Math.abs(leftSpeed.get()) > 0.05)) {
+       m_MotorSubsystem.setMotorSpeedDyn(rightSpeed.get(), -(leftSpeed.get()));
+    }
+  
+
 
   // Called once the command ends or is interrupted.
   @Override

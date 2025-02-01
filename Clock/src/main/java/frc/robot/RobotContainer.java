@@ -27,6 +27,7 @@ public class RobotContainer {
   private final MotorSubsystem m_Subsystem = new MotorSubsystem();
   private final CoralSubsystem m_CoralSubsystem = new CoralSubsystem();
   CommandXboxController xcontroller = new CommandXboxController(0); 
+  // different commands to make the robot go at different speeds
   private CommandDyn m_dynCommand = new CommandDyn(m_Subsystem, xcontroller :: getRightY, xcontroller :: getLeftY);
   private CommandStatic m_ClockCommandSp25 = new CommandStatic(m_Subsystem,0.25);
   private CommandStatic m_ClockCommandSp50 = new CommandStatic(m_Subsystem,0.5);
@@ -38,7 +39,7 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
   }
-
+  //xbox controller bindings
   private void configureBindings() {
     xcontroller.a().whileTrue(m_ClockCommandSp25);
     xcontroller.x().whileTrue(m_CoralOuttake);
