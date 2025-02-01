@@ -48,12 +48,6 @@ public class MotorSubsystem extends SubsystemBase{
         Motor3.set(-speedleft);
         Motor3.set(-speedleft);
     }
-    public void stopMotors() {
-        Motor1.set(0);
-        Motor2.set(0);
-        Motor3.set(0);
-        Motor4.set(0);
-    }
-
+    
 
 }

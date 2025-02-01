@@ -5,6 +5,7 @@
 
 package frc.robot;
 
+import frc.robot.commands.CoralOuttake;
 import frc.robot.commands.CommandDyn;
 import frc.robot.commands.CommandStatic;
 import frc.robot.subsystems.MotorSubsystem;
@@ -31,6 +32,7 @@ public class RobotContainer {
   private CommandStatic m_ClockCommandSp50 = new CommandStatic(m_Subsystem,0.5);
   private CommandStatic m_ClockCommandSp75 = new CommandStatic(m_Subsystem,0.75);
   private CommandStatic m_ClockCommandSp100 = new CommandStatic(m_Subsystem,1.0);
+  private CoralOuttake m_CoralOuttake = new CoralOuttake(m_CoralSubsystem);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
@@ -39,6 +41,7 @@ public class RobotContainer {
 
   private void configureBindings() {
     xcontroller.a().whileTrue(m_ClockCommandSp25);
+    xcontroller.x().whileTrue(m_CoralOuttake);
     xcontroller.rightTrigger().whileTrue(m_ClockCommandSp50);
     m_Subsystem.setDefaultCommand(m_dynCommand);
   }
